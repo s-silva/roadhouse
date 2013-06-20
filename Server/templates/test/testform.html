@@ -1,0 +1,150 @@
+<html><head>
+<title>Roadhouse API Test</title>
+<style>
+	body
+	{
+		font: 11px sans-serif;
+		background: #f7f7f8;
+	}
+
+	a
+	{
+		text-decoration: none;
+	}
+
+	input, textarea
+	{
+		background: #fcfcfc;
+		border: 1px solid #efefef;
+		padding: 5px;
+	}
+
+	.mform, .report, .mdiv
+	{
+		float: left;
+		margin-right: 10px;
+		border: 1px solid #efefef;
+		
+	}
+
+	.report
+	{
+		width: 200px;
+	}
+
+	.big
+	{
+		min-width: 300px;
+	}
+</style>
+	<script type="text/javascript" src="{{ static_url('js/testform.js')}}"></script>
+
+</head><body onload="init()">
+<div class='mdiv'>
+	<div class='mform'>
+		<h3>Rooms</h3>
+		<form>
+				 <input type='text' id='r_name'    placeholder='Room Name'/>
+			<br/><input type='text' id='r_lat'     placeholder='Lat'/>
+			<br/><input type='text' id='r_long'    placeholder='Long'/>
+			<br/><input type='text' id='r_size'    placeholder='Size (1-100)'/>
+			<br/><input type='text' id='r_dsc'     placeholder='Description'/>
+			<br/><input type='text' id='r_address' placeholder='Address'/>
+			<br/><a href='javascript: room_create()'>Add</a>
+		</form>
+	</div>
+
+	<div class='mform'>
+		<h3>People</h3>
+		<form>
+				 <input type='text' id='u_fname' placeholder='First Name'/>
+			<br/><input type='text' id='u_lname' placeholder='Last Name'/>
+			<br/><input type='text' id='u_uname' placeholder='User Name'/>
+			<br/><input type='text' id='u_email' placeholder='Email'/>
+			<br/><input type='text' id='u_pass' placeholder='Password'/>
+			<br/><input type='text' id='u_dsc' placeholder='Description'/>
+			<br/><input type='text' id='u_status' placeholder='Status'/>
+			<br/><a href='javascript: people_createaccout()'>Add</a>
+		</form>
+	</div>
+	
+	<div style='clear: both;'></div>
+
+	<div class='report'>
+		<h3>Rooms Around</h3>
+		<input type='text' id='r_search_lat' placeholder='Room Name' size='5'/>
+		<input type='text' id='r_search_long' placeholder='Room Name' size='5'/>
+		<a href='javascript: room_search()'>Search</a>
+		<br/><br/>
+		<div id="rooms_report">
+			<ul>
+				<li><a href='javascript: alert(1)'>Room 1</a></li>
+				<li><a href='javascript: alert(1)'>Room 2</a></li>
+			</ul>
+		</div>
+
+	</div>
+	<div class='report'>
+		<h3>People</h3>
+		<input type='text' id='u_searchinput' placeholder='Name'/>
+		<a href='javascript: people_search()'>Search</a>
+		<br/><br/>
+		<div id="people_report">
+			<ul>
+				<li><a href='javascript: alert(1)'>Room 1</a></li>
+				<li><a href='javascript: alert(1)'>Room 2</a></li>
+			</ul>
+		</div>
+
+	</div>
+</div>
+<div class='mdiv'>
+	<div style='background: #efefef;'>
+		<textarea id='text_newpost'>Post something here</textarea><br/>
+		<a href='javascript: post_new()'>Add</a>
+		<br/><input id='userlogin_email' type='text' placeholder='Email'/>
+		<br/><input id='userlogin_pass' type='text' placeholder='Password'/>
+		<br/><a href='javascript: user_login()'>Login</a>
+	</div>
+	<div style='clear: both;'></div>
+
+	<div class='report big'>
+		<h3>Conversation</h3>
+		<br/><br/>
+		<div id="conver_report">
+			<ul>
+				<li><a href='javascript: alert(1)'>Conversation 1</a>
+					<ul>
+						<li><a href='javascript: alert(1)'>Note 1</a></li>
+						<li><a href='javascript: alert(1)'>Note 2</a></li>
+					</ul>
+				</li>
+				<li><a href='javascript: alert(1)'>Conversation 2</a></li>
+			</ul>
+		</div>
+
+	</div>
+	<div class='report big'>
+		<h3>Notifications</h3>
+		<br/><br/>
+		<div id="notifications_report">
+		</div>
+
+	</div>
+
+	<div class='report' style='width: 200px'>
+		<h3>Friends</h3>
+		<br/><br/>
+		<div id="friend_report">
+			<ul>
+				<li><a href='javascript: alert(1)'>Friend 1</a></li>
+				<li><a href='javascript: alert(1)'>Friend 2</a></li>
+			</ul>
+		</div>
+
+	</div>
+	
+
+</div>
+
+</body></html>

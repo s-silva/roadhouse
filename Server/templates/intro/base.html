@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>Roadhouse</title>
+
+	
+	<link rel="stylesheet" href='{{ static_url("css/default.css") }}'>
+	<script type="text/javascript" src='{{ static_url("js/main.js") }}'></script>
+	
+	<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-precomposed-72.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-precomposed-114.png">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-precomposed-144.png">
+	
+	<link rel="icon" type="image/png" href="{{ static_url("images/logo/favicon.png") }}">
+	
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/CreativeWork" onload='main_init()'
+
+	{% if entries["background"] %}
+		style="background-image: url('{{ static_url("images/backgrounds/intro.jpg") }}');"
+	{% end %}
+	>
+	
+	<div class='control-bar'>
+		<a href='/'><div class='control-bar-logo'></div></a>
+		<div class='control-bar-footer'>
+			<div class='control-bar-footer-main'>
+				<a href='/about/learn'>Learn</a>
+				<a href='/about/details'>About</a>
+				<a href='/blog'>Blog</a>
+				<a href='/about/contact'>Contact Us</a>
+			</div>
+			<div class='control-bar-footer-sub'>
+				<a href='/about/terms'>Terms of Service</a>
+				<a href='/about/privacy'>Privacy Policy</a>
+				&copy; Roadhouse 2013
+			</div>
+		</div>
+	</div>
+	
+	{% block body %}{% end %}
+	
+	
+</body></html>

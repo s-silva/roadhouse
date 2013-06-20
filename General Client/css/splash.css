@@ -1,0 +1,96 @@
+#splash
+{
+	background: #e60000; /* Old browsers */
+	background: -moz-radial-gradient(center, ellipse cover,  #e60000 1%, #d00000 100%); /* FF3.6+ */
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(1%,#e60000), color-stop(100%,#d00000)); /* Chrome,Safari4+ */
+	background: -webkit-radial-gradient(center, ellipse cover,  #e60000 1%,#d00000 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-radial-gradient(center, ellipse cover,  #e60000 1%,#d00000 100%); /* Opera 12+ */
+	background: -ms-radial-gradient(center, ellipse cover,  #e60000 1%,#d00000 100%); /* IE10+ */
+	background: radial-gradient(ellipse at center,  #e60000 1%,#d00000 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e60000', endColorstr='#d00000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	overflow: hidden;
+	z-index: 1000000;
+}
+
+.splash-box
+{
+	width: 48px;
+	height: 50px;
+	background: url('../img/splash/pin.png');
+	-webkit-animation-fill-mode: both;
+	-moz-animation-fill-mode: both;
+	-ms-animation-fill-mode: both;
+	-o-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-duration: 1s;
+	-moz-animation-duration: 1s;
+	-ms-animation-duration: 1s;
+	-o-animation-duration: 1s;
+	animation-duration: 1s;
+	opacity: 1.0;
+	margin-top: -52px;
+	margin-left: -170px;
+	-webkit-animation-name: splashbounceIn;
+	-webkit-animation-duration: 1.8s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-in;
+	-webkit-transform-origin:50% 100%;
+}
+
+.splash-box2
+{
+	background: url('../img/splash/rh.png');
+	width: 146px;
+	height: 48px;
+	clear: both;
+	margin-left: 40px;
+	-webkit-animation-fill-mode: both;
+	-moz-animation-fill-mode: both;
+	-ms-animation-fill-mode: both;
+	-o-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-duration: 1s;
+	-moz-animation-duration: 1s;
+	-ms-animation-duration: 1s;
+	-o-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-name: splashfadeIn;
+	-webkit-animation-duration: 1.8s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-in;
+}
+
+@-webkit-keyframes splashfadeIn {
+	0% { opacity: 0.0; }
+	40% { opacity: 1.0; }
+	58% { opacity: 1.0; }
+	70% { opacity: 0.7; }
+	84% { opacity: 1.0; }
+	100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes splashbounceIn {
+	0% {
+		opacity: 0;
+		-webkit-transform: translate(0, -400px) rotateZ(0deg);
+	}
+	
+	40% {
+		opacity: 1.0;
+		-webkit-transform: translate(0, 0) rotateZ(0deg);
+	}
+	
+	44% { -webkit-transform: rotateZ(0deg) translate(0, 0); }
+	45% { -webkit-transform: rotateZ(-12deg) translate(0, 0); }
+	50% { -webkit-transform: rotateZ(10deg); }
+	55% { -webkit-transform: rotateZ(-10deg); }
+	60% { -webkit-transform: rotateZ(-8deg); }
+	65% { -webkit-transform: rotateZ(8deg); }
+	70% { -webkit-transform: rotateZ(4deg); }
+	75% { -webkit-transform: rotateZ(-4deg); }
+	80% { -webkit-transform: rotateZ(-2deg); }
+	85% { -webkit-transform: rotateZ(2deg); }
+	90% { -webkit-transform: rotateZ(1deg); }
+	95% { -webkit-transform: rotateZ(-1deg); }
+	100%{ opacity: 1.0; -webkit-transform: rotateZ(0deg);}
+}

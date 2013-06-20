@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class='content-intro'>
+	<div class='intro-main'>
+		<div class='text-intro'>
+			<h1>Walk With Your Friends...</h1>
+			<h2>Discover, start meetups and connect with the world around you.</h2>
+			<h3>Available on Windows Phone Store</h3>
+		</div>
+		
+		<div class='input-intro'>
+			<ul>
+			<li>Enter email address and password here to login...</li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class='intro_phone'>
+		<div class='intro-phone-overlay'></div>
+		<div class='intro-phone-screen'>
+			<div class='intro-phone-screen-content'>
+				<img src='{{ static_url("images/intro/screens/splash.png") }}'/>
+				<div style='clear: both;'></div>
+				<img src='{{ static_url("images/intro/screens/mainscreen.png") }}'/>
+				
+				<img src='{{ static_url("images/intro/screens/1.png") }}'/>
+				<img src='{{ static_url("images/intro/screens/mainscreen.png") }}'/>
+				<div style='clear: both;'></div>
+				<img src='{{ static_url("images/intro/screens/1.png") }}'/>
+				<img src='{{ static_url("images/intro/screens/1.png") }}'/>
+			</div>
+		</div>
+	</div>
+</div>
+{% end %}

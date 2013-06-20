@@ -1,0 +1,1834 @@
+* {
+    -webkit-touch-callout: none;               
+    -webkit-text-size-adjust: none;            
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-user-select: none;                 
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.in, .out {
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 350ms !important;
+}
+
+html
+{
+    height: 100%;
+}
+
+
+body {
+    
+    background: #e90000; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNlOTAwMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZDYwMDAwIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L3JhZGlhbEdyYWRpZW50PgogIDxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-radial-gradient(center, ellipse cover,  #e90000 0%, #d60000 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#e90000), color-stop(100%,#d60000)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  #e90000 0%,#d60000 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  #e90000 0%,#d60000 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  #e90000 0%,#d60000 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  #e90000 0%,#d60000 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e90000', endColorstr='#d60000',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
+
+
+    background-image: url('../img/backgrounds/intro-1.jpg');
+    background-color: #e6ecf1;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+
+    background-attachment:fixed;
+    font-family: 'Segoe', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    width:100%;
+}
+
+a
+{
+    text-decoration: none;
+    border: none;
+}
+
+a img
+{
+    border: none;
+}
+
+img
+{
+    border: none;
+}
+
+/* Portrait layout (default) */
+.app {
+    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+
+    .intro-photos-large
+    {
+        height: 200px;
+    }
+
+    .intro-text-text
+    {
+        float: left;
+    }
+
+    .intro-notifications
+    {
+        display: none;
+    }
+
+    .intro-notifications-landscape
+    {
+        display: inline;
+    }
+
+    .intro-photos-thumbs
+    {
+        margin-top: -60px;
+    }
+}
+
+@media screen and (max-aspect-ratio: 1/1) and (min-width:400px) {
+
+    .intro-notifications-landscape
+    {
+        display: none;
+    }
+}
+
+h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+}
+
+.alertbox
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    min-height: 100%;
+    z-index: 10;
+    background: #1a1a1a;
+    font-size: 14pt;
+    color: #b1b1b1;
+    text-align: center;
+
+}
+
+.alertbox p
+{
+    padding: 20% 10% 10% 10%;
+    font-size: 25pt;
+    color: #b1b1b1;
+}
+
+.icon
+{
+    font-family: 'Sosa';
+    line-height: 100%;
+}
+
+.icon a
+{
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+.intro-text
+{
+    color: #fffefc;
+    padding: 10px;
+    line-height: 100%;
+    
+    
+    position: absolute;
+    bottom: 80px;
+    /*
+    filter: dropshadow(color=#f2a655, offx=0, offy=0);
+    text-shadow: 0px 0px 7px #f2a655;
+    */
+
+    filter: dropshadow(color=#000000, offx=0, offy=0);
+    text-shadow: 0px 0px 7px #000000;
+}
+
+.intro-text h1
+{
+    font-family: 'Segoe UI Light';
+    font-size: 48pt;
+    line-height: 100%;
+    font-weight: 200;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.intro-text h3
+{
+    font: 11pt 'Segoe UI', sans-serif;
+    margin: 20px 0 0 0;
+    padding: 0;
+    line-height: 100%;
+}
+
+.intro-text h2
+{
+    font: 14pt 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+.intro-notifications-landscape
+{
+    width: 100px;
+    height: 100px;
+    background: #dee3ec;
+    position: absolute;
+    top: 2px;
+    right: 0px;
+    bottom: 2px;
+    color: #0f5a80;
+    min-width: 300px;
+    padding: 10px;
+    opacity: 0.92;
+}
+
+.intro-notifications-landscape ul
+{
+    list-style-type: none;
+    font-size: 12pt;
+    padding: 0;
+    margin: 0;
+}
+
+.intro-notifications-landscape h1
+{
+    font-size: 18pt;
+    font-weight: 600;
+}
+
+
+.intro-notifications
+{
+    margin: 30px 0 0 60px;
+    line-height: 140%;
+}
+
+.intro-notifications ul
+{
+    list-style-type: none;
+    font-size: 12pt;
+    padding: 0;
+    margin: 0;
+}
+
+.intro-notifications h1
+{
+    font-size: 18pt;
+    font-weight: 600;
+}
+
+.intro-photos
+{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.intro-photos-large
+{
+    margin: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+.intro-photos-large img
+{
+    /*filter: blur(15px);
+    -webkit-filter: blur(15px);
+    -moz-filter: blur(15px);
+    -o-filter: blur(15px);
+    -ms-filter: blur(15px);
+    -webkit-animation: image_blur 26s; */
+}
+
+@-webkit-keyframes image_blur {
+    0% { -webkit-filter: blur(0px); -webkit-transform: scale(1);}
+    50% { -webkit-filter: blur(15px); -webkit-transform: scale(2);}
+    100% { -webkit-filter: blur(0px); -webkit-transform: scale(1);}
+}
+
+.intro-photos-thumbs
+{
+    height: 112px;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.intro-photos-thumbs-inner
+{
+    width: 400%;
+}
+
+.intro-photos-thumbs img
+{
+    height: 100%;
+    width: auto;
+}
+
+
+.appbar
+{
+    color: #fcdbdb;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 15px 20px 15px 20px;
+    z-index: 100100;
+    background: #e90000;
+}
+
+.appbar a
+{
+    color: #fcdbdb;
+}
+
+.ui-page { -webkit-backface-visibility: hidden; background: #e90000; text-shadow: none;}
+.ui-content { -webkit-backface-visibility: hidden; background: #e90000; text-shadow: none; padding: 1px; margin: 0;}
+.ui-panel-content-wrap { -webkit-backface-visibility: hidden; background: #e90000; text-shadow: none; padding: 1px; margin: 0;}
+.ui-panel-inner {padding: 0; margin: 0;}
+
+.room_tile
+{
+    font-family: "Segoe WP";
+    font-weight: 400;
+    background: #f1f5ff;
+    padding: 0;
+    margin: 0;
+    float: left;
+    position: absolute;
+    overflow: hidden;
+}
+
+.room_tile img
+{
+    width: 100%;
+    height: auto;
+}
+
+
+.room_tile.s
+{
+    width: 50%;
+}
+
+.room_tile.t
+{
+    width: 50%;
+}
+
+.room_tile.w
+{
+    width: 100%;
+}
+
+
+.room_tile_text {
+   background: #f1f5ff;
+   position: absolute;
+   bottom: 0px;
+   width: 100%;
+}
+.room_tile_text:before {
+   content:"";
+   position: absolute;
+   left: 10%;
+   top: -20px;
+   width: 0;
+   height: 0;
+   border-left: 16px solid transparent;
+   border-bottom: 20px solid #f1f5ff;
+   border-right: 16px solid transparent;
+}
+
+.room_tile_text_inner
+{
+    padding: 10px;
+}
+
+.room_tile_text h1
+{
+    font-size: 16pt;
+}
+
+.room_tile_text p
+{
+    margin: 0;
+    font-size: 12pt;
+}
+
+
+#myPanel
+{
+    background: #1d1d2d;
+    font: 9pt "Segoe UI Light", "Segoe WP";
+    font-weight: 300;
+    color: #ffffff;
+    text-shadow: none;
+    padding: 0;
+    width: 40%;
+    position: absolute;
+    z-index: 10000;
+    height: 100%;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: both;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    display: none;
+
+
+}
+
+#myPanel a
+{
+    color: #ffffff;
+}
+
+#myPanel.show
+{
+    -webkit-animation-name: fadeInLeft;
+    animation-name: fadeInLeft;
+}
+
+#myPanel li
+{
+    padding: 20px 10px 20px 20px;
+    margin: 0;
+    cursor: pointer;
+}
+
+#myPanel li:hover
+{
+    background: #7e6464;
+}
+
+
+#myPanel ul
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: #e9e6e6;
+}
+
+
+#myPanel h1
+{
+    font-size: 26pt;
+    font-weight: 300;
+    padding: 10px;
+}
+
+#myPanel h2
+{
+    font-size: 16pt;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+}
+
+
+.page-hdr
+{
+    background: #e90000;
+    padding: 10px;
+    height: 116px;
+    color: #ffffff;
+}
+
+.page-hdr h1
+{
+    font: 32px "Segoe UI", "Segoe WP", helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.page-hdr p
+{
+    font: 16px "Segoe UI light", "Segoe WP", helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+    color: #f8adad;
+}
+
+.page-content
+{
+    background: #f1f5ff;
+    overflow: hidden;
+}
+
+.content.settings 
+{
+    background: #e6ecf1;
+    width: 100%;
+}
+
+.content.settings h2
+{
+    font: 48pt "Arial Black", helvetica, sans-serif;
+    font-weight: 800;
+    color: #bb0c0d;
+    margin: 0;
+    padding: 10px;
+    line-height: 100%;
+}
+
+.content.settings h1
+{
+    font: 32pt "Segoe WP", helvetica, sans-serif;
+    font-weight: 300;
+    color: #3a3a3a;
+    margin: 0;
+    padding: 10px;
+    line-height: 100%;
+}
+
+.content.settings p
+{
+    font: 14pt "Segoe WP", helvetica, sans-serif;
+    font-weight: 300;
+    color: #3a3a3a;
+    margin: 0;
+    padding: 10px;
+    line-height: 120%;
+}
+
+
+/* conversations ------------------------------------------------- */
+
+
+.conversation-hdr
+{
+    height: 54px;
+    background: #e60000;    
+    z-index: 10000;
+}
+
+.conversation-hdr p
+{
+    float: right;5
+    color: #faba99;
+    margin: 12px 8px 0 8px;
+    text-shadow: 0px 0px 5px rgba(255, 153, 102, 1);
+}
+
+.conversation-hdr-text
+{
+    float: right;
+    color: #faba99;
+    margin: 16px 22px 0 12px;
+    font-size: 18px;
+    text-shadow: 0px 0px 5px rgba(255, 153, 102, 1);
+}
+
+.conversation-hdr img
+{
+    margin: 15px 0 0 15px;
+}
+
+.conversation-expand-btn
+{
+    text-align: center;
+    width: 100%;
+    padding: 30px 0 30px 0;
+    background: #009fc6;
+    font-size: 20pt;
+    color: #ffffff;
+    margin-bottom: 120px;
+}
+
+.conversation-expand-btn:hover
+{
+    background: #00bfe6;
+}
+
+.post-full
+{
+    max-width: 600px;
+    text-align: left;
+}
+
+.post
+{
+    margin: 0px 0px 0 0px;
+    background: #333333; /*#f1f5ff;*/
+    z-index: 8;
+}
+
+.post.hasnotes
+{
+}
+
+.post-img
+{
+    overflow: hidden;
+    width:100%;
+    height:0;
+    padding-bottom:75%;
+}
+
+.post-img img
+{
+    width: 100%;
+    height: auto;
+}
+
+.post-mdata
+{
+    position: relative;
+    font-family: "Arial", helvetica, sans-serif;
+    font-size: 14pt;
+    font-weight: 300;
+    color: #cacaca;
+}
+
+.post-mdata p
+{
+    margin: 0;
+    padding: 0;
+}
+
+.post-text
+{
+    padding: 15px;
+    font-size: 12pt;
+    margin-left: 80px;
+}
+
+.post-text h1
+{
+    margin: 0;
+    padding: 0;
+    font-size: 18pt;
+    color: #e6e6e6;
+    font-weight: 800;
+}
+
+.post-text abbr
+{
+    font-size: 12pt;
+    color: #a8a8a8;
+}
+
+.post-text p
+{
+    margin: 0;
+    padding: 0;
+    color: #758693;
+    font-size: 14px;
+}
+
+.post-dp-strip
+{
+    width: 70px;
+    height: 70px;
+    float: left;
+    margin: 2px 0 0 15px;
+}
+
+.post-dp-dp
+{
+    margin-top: 7px;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    overflow: hidden;
+}
+
+.post-dp-dp img
+{
+    width: 100%;
+    height: auto;
+}
+
+.post-dp-up
+{
+    color: #808080;
+}
+
+.post-extra
+{
+    color: #4f6574;
+}
+.post-extra:before {
+   content:"";
+   position: absolute;
+   left: 10%;
+   bottom: 0;
+   width: 0;
+   height: 0;
+   border-left: 16px solid transparent;
+   border-bottom: 20px solid #e6e6e6;
+   border-right: 16px solid transparent;
+}
+
+.post-extra-icon
+{
+    float: right;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.post-extra-icon.love
+{
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-iteration-count: 4;
+    -webkit-animation-fill-mode: both;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-iteration-count: 4;
+    animation-fill-mode: both;
+}
+
+.post-extra-icon.love:hover
+{
+    -webkit-animation-name: pulse;
+}
+
+.post-extra-icon-big:hover
+{
+    margin-top: -4px;
+}
+
+.post-extra-icon-big
+{
+    color: #999999;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 100%;
+    margin: 0;
+    padding-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.post-extra-icon-big.action
+{
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: both;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    -webkit-animation-name: wobble;
+}
+
+.post-extra-icon-dsc
+{
+    font-size: 14px;
+    color: #808080;
+    line-height: 100%;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.post-extra abbr
+{
+    color: #a5b1bc;
+}
+
+.post-extra a
+{
+    color: #808080;
+}
+
+.post-loc
+{
+
+}
+
+.notes-ct
+{
+    background: #e6e6e6;
+    z-index: 2;
+    padding-top: 12px;
+}
+
+.notes-inner
+{
+    padding: 4px;
+}
+
+.notes-note
+{
+    font-size: 13pt;
+}
+
+.notes-note-dp
+{
+    margin-top: 7px;
+    margin-left: 7px;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    float: left;
+}
+
+.notes-note-dp img
+{
+    width: 100%;
+    height: auto;
+}
+
+.notes-note-text
+{
+    padding: 4px;
+    margin-left: 74px;
+    padding-top: 8px;
+}
+
+.notes-note-text textarea
+{
+    width: 100%;
+    border: none;
+    background: #e6e6e6;
+    font: 13pt "Segoe WP", "Segoe UI", helvetica, sans-serif;
+    font-weight: 300;
+    color: #5e5e5d;
+    -webkit-user-select: text;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    padding: 15px;
+    resize: none; 
+}
+
+.notes-note-text h1
+{
+    margin: 0;
+    padding: 0;
+    font-size: 13pt;
+    color: #6a6a6a;
+    font-weight: bold;
+}
+
+.notes-note-text p
+{
+    margin: 0;
+    padding: 0;
+    color: #6a6a6a;
+}
+
+.notes-note-text abbr
+{
+    font-size: 12pt;
+    color: #a5a5a5;
+}
+
+.notes-sep
+{
+    border-top: 1px solid #dee3ec;
+    margin: 5px 5px 0 5px;
+    padding-top: 5px;
+    color: #4f6574;
+}
+
+/* information display ------------------------------------------------*/
+
+.item-info
+{
+
+
+}
+
+.item-info-button-set
+{
+    padding: 10px;
+}
+
+.item-info-button
+{
+    width: 130px;
+    height: 130px;
+    line-height: 130px;
+    background: #00bfe6;
+    font-size: 16pt;
+    color: #ffffff;
+    cursor: pointer;
+    text-align: center;
+    float: left;
+    margin-right: 10px;
+}
+
+.item-info-button:hover
+{
+    background: #20dff6;
+}
+
+.item-info-dp
+{
+    overflow: hidden;
+    width:100%;
+    height:0;
+    padding-bottom:60%;
+}
+
+.item-info-dp img
+{
+    width: 100%;
+    height: auto;
+}
+
+.item-info-text
+{
+    padding: 7px;
+}
+
+
+.item-info-text h1
+{
+    margin: 0;
+    padding: 0;
+    font-size: 50pt;
+    color: #5d5d5d;
+    font-weight: 300;
+}
+
+.item-info-text p
+{
+    margin: 10px 0 0 0;
+    padding: 0;
+    font-size: 16pt;
+    color: #676767;
+}
+
+/* schedule --------------------------------------------------------*/
+
+.schedule-item
+{
+    margin: 0 0 30px 0;
+}
+
+.schedule-item-img
+{
+    overflow: hidden;
+    width:100%;
+    height:0;
+    padding-bottom:40%;
+    position: relative;
+}
+
+.schedule-item-img img
+{
+    width: 100%;
+    height: auto;
+}
+
+.schedule-item-info
+{
+    background: #000000;
+    color: #ffffff;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 10px;
+    opacity: 0.7;
+}
+
+.schedule-item-info h1
+{
+    margin: 0;
+    padding: 0;
+    line-height: 100%;
+    font-size: 36px;
+}
+
+.schedule-item-info p
+{
+    margin: 0;
+    padding: 0;
+    line-height: 100%;
+}
+
+.schedule-item-text
+{
+    padding: 10px;
+}
+
+.schedule-item-text h1
+{
+    font-size: 14pt;
+    color: #515a63;
+}
+
+.schedule-item-text p
+{
+    font-size: 10pt;
+    color: #888598;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* page management --------------------------------------------------------- */
+
+.page
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: none;
+    width: 100%;
+    min-height: 100%;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: both;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    z-index: 10;
+}
+
+.page.close
+{
+    -webkit-animation-name: flipOutY;
+    display: none;
+}
+
+.page.left
+{
+    -webkit-animation-name: bounceInLeft;
+    animation-name: bounceInLeft;
+}
+
+.page.right
+{
+    -webkit-animation-name: bounceInRight;
+    animation-name: bounceInRight;
+}
+
+.preloader
+{
+    clear: both;
+}
+
+.content-message
+{
+    font-size: 18pt;
+    font-weight: 500;
+    color: #9db1bb;
+    text-align: center;
+    max-width: 60%;
+    margin-top: -30px;
+}
+
+
+
+/* camera --------------------------------------------------------------------------- */
+
+.camera-set img
+{
+    width: 100%;
+    height: auto;
+}
+
+.camera-panel
+{
+    background: #333333;
+    color: #ffffff;
+}
+
+.camera-panel img
+{
+    width: 100%;
+    height: auto;
+}
+
+.camera-panel-top
+{
+
+}
+
+.camera-panel-close
+{
+    width: 60px;
+    height: 60px;
+    float: left;
+    overflow: hidden;
+    margin: 2px;
+    font-size: 30px;
+    line-height: 60px;
+    text-align: center;
+    float: right;
+}
+
+.camera-panel-write
+{
+    float: left;
+    width: 70%;
+}
+
+.camera-panel-write textarea
+{
+    background: #333333;
+    border: none;
+    color: #cecece;
+    font-family: "Segoe WP", helvetica, sans-serif;
+    font-size: 14pt;
+    margin: 10px;
+    width: 100%;
+    resize: none;
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    overflow-y: auto;
+}
+
+.camera-panel-bfilter
+{
+    width: 60px;
+    height: 80px;
+    padding: 10px 0 10px 0;
+    float: left;
+    overflow: hidden;
+    margin: 2px;
+    line-height: 60px;
+    text-align: center;
+    color: #cecece;
+    cursor: pointer;
+}
+
+.camera-panel-bfilter h1
+{
+    font-weight: 600;
+    font-size: 70px;
+    color: #cecece;
+}
+
+.camera-panel-bfilter p
+{
+    font-weight: 200;
+    font-size: 14px;
+    line-height: 120%;
+    color: #cecece;
+    margin: 0;
+    padding: 0;
+}
+
+.camera-panel-bfilter img
+{
+    width: auto;
+}
+
+.camera-set-finalbutton
+{
+    text-align: center;
+    width: 100%;
+    padding: 30px 0 30px 0;
+    background: #009fc6;
+    font-size: 20pt;
+    color: #ffffff;
+    margin-bottom: 2px;
+}
+
+.camera-set-finalbutton:hover
+{
+    background: #00bfe6;
+}
+
+
+
+/* new posts/rooms ---------------------------------------------------------- */
+
+.newpost-quote
+{
+    background: #ffffff;
+    color: #333333;
+    font-size: 14pt;
+    height: 88%;
+    margin: 10px 10px 0 10px;
+    position: relative;
+}
+
+.newpost-quote:before {
+   content:"";
+   position: absolute;
+   left: 10%;
+   bottom: -20px;
+   width: 0;
+   height: 0;
+   border-top: 20px solid #ffffff;
+   border-right: 30px solid transparent;
+}
+
+.newpost-header
+{
+    background: #009fc6;
+    color: #ffffff;
+    height: 94px;
+    line-height: 94px;
+    font-size: 50px;
+    padding-left: 10px;
+}
+
+.newpost-img
+{
+    background: #efefef;
+    width: 100%;
+    padding-bottom: 56%;
+    overflow: hidden;
+    position: relative;
+    height:0;
+}
+
+.newpost-roomimg
+{
+    background: #efefef;
+    width: 100%;
+    padding-bottom: 30%;
+    overflow: hidden;
+    position: relative;
+    height:0;
+}
+
+.newpost-img img
+{
+    width: 100%;
+    height: auto;
+}
+
+.newpost-img-overlay
+{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    color: #ffffff;
+    opacity: 0.8;
+    background: #000000;
+    padding: 7px 7px 7px 7px;
+    text-align: right;
+}
+
+.newpost-text 
+{
+    margin: 15px;
+}
+
+.newpost-text textarea
+{
+    font-size: 16pt;
+    color: #333333;
+    height: 220px;
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    overflow-y: auto;
+    font-family: "Segoe WP", helvetica;
+    border: 0;
+    width: 100%;
+    resize: none;
+}
+
+.newpost-room 
+{
+    margin: 15px;
+}
+
+.newpost-room textarea
+{
+    font-size: 16pt;
+    color: #333333;
+    height: 80px;
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    overflow-y: auto;
+    font-family: "Segoe WP", helvetica;
+    border: 0;
+    width: 100%;
+    resize: none;
+}
+
+.newpost-room input
+{
+    font-size: 16pt;
+    color: #333333;
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    overflow-y: auto;
+    font-family: "Segoe WP", helvetica;
+    border: 0;
+    width: 100%;
+    resize: none;
+}
+
+.newpost-button
+{
+    height: 60px;
+    background: #dfdfdf;
+    color: #363636;
+    font-size: 15pt;
+    line-height: 60px;
+    text-align: center;
+}
+
+
+/* friends/chat ------------------------------------------------------------- */
+
+.friends-list table, tr, td
+{
+    border: none;
+    padding: 0;
+}
+
+.friend-block
+{
+    width: 50%;
+    height: 0;
+    padding-bottom: 50%;
+    margin: 0;
+    display: block;
+}
+
+.friend-block-inner
+{
+    background: #ae0000;
+    padding-bottom: 100%;
+    overflow: hidden;
+    height: 0;
+    position: relative;
+}
+
+.friend-block-overlay
+{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    color: #ffffff;
+    opacity: 0.8;
+    background: #000000;
+    padding: 7px 7px 7px 7px;
+    text-align: right;
+    font-size: 14pt;
+}
+
+.friend-block-fulloverlay
+{
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    right: 0px;
+    color: #ffffff;
+    padding: 7px 7px 7px 7px;
+    text-align: center;
+    margin-top: -50px;
+}
+
+
+.friends-search
+{
+    position: absolute;
+    width: 100%;
+    padding: 30px 10px 30px 10px;
+    background: #009fc6;
+    color: #ffffff;
+    z-index: 100021;
+    margin-top: 40px;
+}
+
+.friends-search input
+{
+    background: #009fc6;
+    color: #ffffff;
+    border: none;
+    font-size: 25px;
+    padding: 10px;
+    margin-top: 35px;
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+.friends-search input::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #ffffff;
+}
+.friends-search input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #ffffff;
+}
+.friends-search input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #ffffff;
+}
+.friends-search input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #ffffff;
+}
+
+
+.friends-search-btn
+{
+    float: right;
+    height: 100%;
+    padding: 15px;
+    margin-right: 10px;
+}
+
+.friends-search-btn:hover
+{
+    background: #007fa6;
+}
+
+
+/* overlay */
+
+
+.dialog-overlay
+{
+    position: fixed;
+    z-index: 100020;
+    top: 0px;
+    bottom: 0px;
+    background: #000000;
+    right: 0px;
+    left: 0px;
+    opacity: 0.4;
+}
+
+
+/* profile ------------------------------------ */
+
+.profile-top
+{
+    height: 20%;
+    min-height: 120px;
+    background: #b3c8d1;
+    position: relative;
+}
+
+.profile-dp
+{
+    width: 160px;
+    height: 160px;
+    -moz-border-radius: 90px;
+    border-radius: 90px;
+    border: 3px solid #ffffff;
+    overflow: hidden;
+    position: absolute;
+    bottom: -80px;
+    left: 20px;
+}
+
+.profile-dp img
+{
+    height: 100%;
+    width: auto;
+}
+
+.profile-btn
+{
+    color: #888888;
+    padding: 10px 20px 10px 20px;
+    float: right;
+    margin-top: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.profile-btn:hover
+{
+    color: #ffffff;
+}
+
+.profile-text
+{
+    margin-top: 80px;
+    padding: 15px;
+    color: #ababab;
+}
+
+
+.profile-text h1
+{
+    font-size: 60pt;
+}
+
+.profile-text p
+{
+    font-size: 14pt;
+}
+
+
+/* notification related stuff ------------------------------------------------------------- */
+
+.notification-button
+{
+    position: absolute;
+    right: 30px;
+    top: 0px;
+    height: 80px;
+    width: 80px;
+    background: #e90000;
+    color: #ffffff;
+    border: 1px solid #650000;
+    z-index: 100200;
+    line-height: 80px;
+    text-align: center;
+    font-size: 22pt;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.notification-item-btn
+{
+    padding: 15px 15px 15px 15px;
+    font-size: 14pt;
+    color: #ffffff;
+    height: 40px;
+    line-height: 40px;
+    min-width: 70px;
+    text-align: center;
+    background: #009fc6;
+    float: right;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.notification-item-btn:hover
+{
+    background: #00bfe6;
+}
+
+.notification-item
+{
+    padding: 15px 15px 15px 15px;
+    font-size: 13pt;
+    color: #333333;
+    background: #e6e6e6;
+    margin-left: 90px;
+    margin-right: 10px;
+    margin-top: 5px;
+    position: relative;
+}
+
+.notification-item:before {
+   content:"";
+   position: absolute;
+   left: -12px;
+   top:  10px;
+   width: 0;
+   height: 0;
+   border-top: 12px solid transparent;
+   border-right: 15px solid #e6e6e6;
+   border-bottom: 12px solid transparent;
+}
+
+.notification-item abbr
+{
+    font-size: 12pt;
+    color: #757575;
+}
+
+.notification-text
+{
+    margin-left: 10px;
+    margin-top: 7px;
+}
+
+.notification-dp
+{
+    float: left;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    margin: 0 0 0 15px;
+}
+
+.notification-dp img
+{
+    width: 100%;
+    height: auto;
+}
+
+.notification-header
+{
+    margin: 0;
+    padding: 15px 15px 10px 15px;
+    background: #4b4b4b;
+    margin-bottom: 8px;
+}
+
+.notification-header h1
+{
+    color: #f8f8f8;
+    font-size: 25pt;
+}
+
+
+
+/* login/create account ---------------------------------------------*/
+
+.loginform
+{
+   
+    width: 100%;
+}
+
+.loginform_inner
+{
+    padding: 250px 60px 20px 20px;
+}
+
+.loginnewform_inner
+{
+    padding: 20px 60px 20px 20px;
+}
+
+
+.loginform input
+{
+    font-size: 16pt;
+    color: #333333;
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    overflow-y: auto;
+    font-family: "Segoe WP", helvetica;
+    border: 0;
+    width: 100%;
+    resize: none;
+    padding: 20px;
+    display: block;
+}
+
+.loginform a
+{
+    background: #009fc6;
+    font-size: 16pt;
+    color: #ffffff;
+    overflow-y: auto;
+    font-family: "Segoe WP", helvetica;
+    border: 0;
+    width: 100%;
+    padding: 20px;
+    display: block;
+    text-align: center;
+}
+
+/* settings ------------------------------------------------------------------*/
+
+.settings-content
+{
+    padding: 10px;
+    font-size: 13pt;
+    padding: 10px 30px 10px 10px;
+    color: #505050;
+    padding-bottom: 80px;
+}
+
+.settings-section
+{
+    font-size: 16pt;
+    color: #333333;
+    background: #ffffff;
+    font-family: "Segoe WP", helvetica;
+    border: 0;
+    width: 100%;
+    display: block;
+    height: 200px;
+    margin: 4px 0 10px 0;
+    padding: 10px;
+}
+
+.settings-content input
+{
+    font-size: 16pt;
+    color: #333333;
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    overflow-y: auto;
+    font-family: "Segoe WP", helvetica;
+    border: 0;
+    width: 100%;
+    padding: 10px;
+    display: block;
+    margin: 4px 0 10px 0;
+}
+
+.settings-section-profile-dp
+{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    float: left;
+}
+
+.settings-section-profile-dp img
+{
+    width: 100%;
+    height: auto;
+}
+
+.settings-button
+{
+    float: left;
+    margin-left: 10px;
+    padding: 10px 20px 10px 20px;
+    border: 2px solid #ccd8df;
+    min-width: 160px;
+    margin-bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.settings-button:hover
+{
+    background: #ccd8df;
+}
+
+.settings-save-button
+{
+    text-align: center;
+    width: 100%;
+    padding: 30px 0 30px 0;
+    background: #009fc6;
+    font-size: 20pt;
+    color: #ffffff;
+    margin-bottom: 2px;
+}
+
+.settings-save-button:hover
+{
+    background: #00bfe6;
+}
+
+
+.settings-option
+{
+    font-size: 16pt;
+    color: #333333;
+    font-family: "Segoe WP", helvetica;
+    border: 0;
+    width: 100%;
+    padding: 10px;
+    display: block;
+    margin: 4px 0 10px 0;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.settings-option.selected
+{
+    background: #3a8fac;
+    color: #ffffff;
+}
+
+
+.settings-check
+{
+    font-size: 16pt;
+    color: #333333;
+    font-family: "Segoe WP", helvetica;
+    border: 0;
+    width: 100%;
+    padding: 10px;
+    display: block;
+    margin: 4px 0 10px 0;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.settings-check-txt
+{
+    float: right;
+}
+
+
+/* map --------------------------------------------------- */
+
+.mapcover-use
+{
+    background: #ffffff;
+    color: #333333;
+    font-size: 14pt;
+    text-align: center;
+    width: 250px;
+    margin-left: 20px;
+    opacity: 0.7;
+    padding: 8px;
+}
+
+.mapcover-use:hover
+{
+    background: #00bfe6;
+}

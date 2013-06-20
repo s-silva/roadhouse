@@ -1,0 +1,60 @@
+Summary:
+
+What's most valued in life is the great moments we had, places we
+went to and the people we spent those moments with.
+We believe that technology should not be a replacement for those connections and moments,
+a simulation of life, instead it should
+assist people to get together, make the moments that value, with maybe
+strangers or friends, maybe family. 
+
+What we've found out about human interactions is that,
+people do make connections based on places more than anything. 
+That's how we got to know our siblings,
+met friends at school, university, work or simply at an event.
+
+In order to follow our vision, we built a system where people in a certain place,
+at an event or simply an area can communicate as a group. And make spontaneous
+events. Such that -
+	
+	o. A few musicians can decide to play in a community park and
+annouce that to an audience who cannot see it but just around the park at the moment.
+
+	o. Disaster relief organizations and such can communicate, share information 
+and have a general conversation/plan based on the location, and establish a network
+quickly without needing to collect contact information (phone numbers/email addresses) of 
+each other.
+
+	o. A new student to a university can join the conversation everybody's having
+as they enter the university.
+
+	o. People attending a large event can share the photos they took at the event
+to one album.
+
+	o. Something like a restaurent can show whoever drives near them about their
+special menu  for the day, and if any special thing happens there.
+
+
+The Product
+
+The app provides real-time updates of what's happening around the user, with the
+help of geolocation features of the phone. Once the user enters a room, they will
+receive real-updates of the conversation and the user will be able to communicate
+by various means and to share videos and photos. In addition to that, the user
+will be able to keep private conversations with friends. Figure 1.1 gives a glimpse
+of the app.
+
+  +----------------------------------------------------------------------------+
+  |																			   |
+  |                                                                            |
+  |                                                                            |
+  |                                                                            |
+  |                                                                            |
+  |                                                                            |
+  |                                                                            |
+  |                                                                            |
+  |                                                                            |
+  |                                                                            |
+  |                                                                            |
+  |                                                                            |
+  +----------------------------------------------------------------------------+
+  

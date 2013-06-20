@@ -1,0 +1,434 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=480px, height=800"/><!--, target-densitydpi=device-dpi" />-->
+		<title>Roadhouse</title>
+
+		
+		<link rel="stylesheet" type="text/css" href="css/animate.css" />
+		<link rel="stylesheet" type="text/css" href="css/splash.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+	</head>
+	<body onload='roadhouse_init()'>
+
+		<div id='dataset1' data-staticurl=""></div>
+
+		<!--<div class='appbar'>
+			<center>
+				<a href='javascript: page_show("page1")'><img src='{{ static_url("client/img/icons/home.png")}}' style='margin: 0 15px 0 15px' width='32px' /></a>
+				<a href='javascript: page_show_dialog("friends")'><img src='{{ static_url("client/img/icons/user.png")}}' style='margin: 0 15px 0 15px' width='32px' /></a>
+				<a href='javascript: page_show_dialog("newpost")'><img src='{{ static_url("client/img/icons/write.png")}}' style='margin: 0 15px 0 15px' width='32px' /></a>
+				<a href='javascript: capture_image(newpost_photo_event, "newpost");'><img src='{{ static_url("client/img/icons/camera.png")}}' style='margin: 0 15px 0 15px' width='32px' /></a>
+			</center>
+		</div>-->
+
+		<section id="page1" class="page" data-sl='0' data-sr='page2' style='overflow: hidden; padding: 0; min-height: 100%; display: inline;' data-onload='introduction_display'	>
+
+
+			<div data-role="panel" id="myPanel">
+		    	<h1>Settings</h1>
+		        <ul>
+		            <li onclick='page_show_from_panel("settings1")'><h2>Account</h2></li>
+		            <li onclick='page_show_from_panel("settings2")'><h2>Privacy</h2></li>
+		            <li onclick='page_show_from_panel("settings3")'><h2>Notifications</h2></li>
+		            <li onclick='page_show_from_panel("settings4")'><h2>About</h2></li>
+		            <li onclick='roadhouse_logout()'><h2>Logout</h2></a>
+		        </ul>
+		    
+		    </div>
+
+		    <div data-role="content" class="content" id="ctpage1" style='overflow: hidden; padding: 0;'>
+		    	<div class='intro'>
+
+					<div class='intro-photos-large' id='intro-photos-large'>
+					</div>
+					
+					<div class='intro-text' style='width: 100%;'>
+						<div class='intro-text-text' id='intro-text'>
+							<h2><span id='intro-uname'>Anon</span>, you are here at,</h2>
+							<h1><div id='intro-header'></div></h1>
+							<h3><div id='intro-details'></div></h3>
+						</div>
+						<div class='intro-notifications' onclick='notifications_display();'>
+							<span class='icon' style='font-size: 90px; float: left; margin-top: -10px'><img src='img/icons/notify.png' style='margin: 0 15px 0 15px' width='85px' /></span>
+							<h1><span id='notification-counter-p'>0</span></h1>
+							<ul>
+								<li><div id='ntfls_p1'></div></li>
+								<li><div id='ntfls_p2'></div></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+		img/logo-long.png
+		
+	    <section id="page2" class="page" data-sl='page1' data-sr='page3' style='background: #dde1eb; height: 100%;'
+	    	id='rooms_page' data-paction='rooms_init_panel'>
+	    	<div class='webscroll' id='wsroom-list' style='height: 100%; overflow: auto;'>
+		    	<div data-role="content" class="content"  style='background: #dde1eb;'>
+		    		<div class='rooms_ct' id='rooms_ct'>
+		    		
+		    		</div>
+		    	</div>
+	    	</div>
+	    </section>
+
+	    <section id="page3" class="page" data-sl='page2' data-sr='page4' style='height: 100%;' data-onload='map_initialize'>
+	        <div data-role="content" class="content" style='overflow: hidden; padding: 0; height: 100%;'>
+	             <div class='page-content' style='height: 100%;'>
+	            	<div class='page-hdr'>
+	            		<img src='img/logo-long.png'/>
+	            		<h1>map</h1>
+	            		<p>See what's happening around you</p>
+	            	</div>
+	            	<div style='clear: both;'></div>
+	             	<!--<img src='img/test/map.png' style='width: 100%;'/>-->
+	             	<div id='rmapcover' style="position:absolute; width:100%; height:100%; z-index: 1000;"></div>
+	             	<div id='rmapcoverbtn' style="position:absolute; z-index: 1001;" class='mapcover-use'>Tap to use the map</div>
+					<div id='rmap' style="position:relative; width:100%; height:100%;"></div>
+      
+	             	
+	             </div>
+	        </div>
+	    </section>    
+
+		<section id="page4" class="page" data-sl='page3' data-sr='0' style='padding: 0; background: #f1f5ff; height: 100%;' data-onload='subscriptions_display'>
+	        <div class='webscroll' id='wssubscriptions-list' style='height: 100%; overflow: auto;'><div data-role="content" class="content" style='padding: 0; background: #f1f5ff;'>
+	            <div class='page-content'>
+	            	<div class='page-hdr'>
+	            		<img src='img/logo-long.png'/>
+	            		<h1>subscriptions</h1>
+	            		<p>Your day, a list of things you've marked.</p>
+	            	</div>
+	            	<div style='clear: both;'></div>
+	            	
+	            		<div id='subscriptions-list'>
+		             	
+		        		</div>
+		        	
+	            </div>
+	        </div></div>
+	    </section>
+
+	    <section id="conv1" data-subpage='conversation' data-sl='page2' data-sr='conv2' class="page" style='padding: 0; background: #333333;'>
+	        <div class="content" style='padding: 0; background: #333333; height: 800px;'><!-- overflow: scroll;'>-->
+	        	<div class='conversation-hdr'>
+	        		<img src='img/logo-long.png' height='23px'/>
+	        		<div class='conversation-hdr-text' id='conversation-title'>Mayfield Park Meetup</div>
+	        	</div>
+	        	<div class='webscroll' id='conversation_fcontent' style='height: 100%; overflow: auto;'>
+	        	<center>
+	        	<div id="conversation_ct" style='padding-bottom: 150px;'>
+	        	</div>
+	        	<div class='conversation-expand-btn' onclick='conversation_expand_current();'>More...</div>
+				</center>
+				</div>
+	        </div>
+	    </section>
+
+	    <section id="conv2" data-subpage='conversation' class="page" data-sl='conv1' data-sr='0' style='padding: 0; background: #f9f9f9;' data-onload='room_info_initialize'>
+	        <div data-role="content" class="content" style='padding: 0; background: #f9f9f9;'>
+	        	<div class='conversation-hdr'>
+	        		<img src='img/logo-long.png' height='23px'/>
+	        		<div class='conversation-hdr-text' id='conversation-title-info'>Mayfield Park Meetup</div>
+	        	</div>
+
+	        	<div class='item-info'>
+	        		<div class='item-info-dp'>
+						<div id='rinfo_rmap' style="position:relative; width:100%; height:400px;"></div>
+	        		</div>
+	        		<div class='item-info-text'>
+	        			<h1 id='roominfo-title'></h1>
+						<div id='roominfo-dsc'><p></p></div>
+	        		</div>
+	        		<div class='item-info-button-set'>
+		        		<div class='item-info-button' id='item-info-button-subscribe' onclick='item_info_croom_subscribe(this)'>Subscribe</div>
+		        		<div class='item-info-button' id='item-info-button-newmsg' onclick='item_info_croom_newmsg(this)'>New Message</div>
+		        		<div class='item-info-button' id='item-info-button-newphoto' onclick='item_info_croom_newphoto(this)'>New Photo</div>
+	        		</div>
+	        	</div>
+	        </div>
+	    </section>
+
+
+
+	
+		<section id="splash" class="page" data-sl='0' data-sr='0' style='overflow: hidden; padding: 0; height: 100%;'>
+			<div style='float: left; height: 50%; width: 100%; margin-bottom: -24px;'></div>
+			<center><div class='splash-box2'></div><div class='splash-box'></div></center>
+		</section>
+
+
+
+		<section id="settings1" data-subpage='settings' class="page" data-sl='page1' data-sr='settings2' style='padding: 0; background: #e6ecf1;' data-onload='settings_load_account'>
+	        <div data-role="content" class="content settings" style='padding-bottom: 80px;'>
+	        	<div class='conversation-hdr'>
+	        		<img src='img/logo-long.png' height='23px'/>
+	        		<div class='conversation-hdr-text'>Account Settings</div>
+	        	</div>
+
+	        	<h1>Account Settings</h1>
+	        	<div class='settings-content'>
+		        	Display Picture
+		        	<div class='settings-section'>
+		        		<div class='settings-section-profile-dp'>
+		        			<img id='sprofile_dp' onload='image_center_fillsq(this);' src='img/test/dp.jpg'/>
+		        		</div>
+		        		<div class='settings-button' onclick='settings_profile_addphoto(1);'>
+		        			Select Photo
+		        		</div>
+		        	</div>
+		        	First Name:
+		        	<input id='settingsp_fname' type='text'/>
+		        	Last Name:
+		        	<input id='settingsp_lname' type='text'/>
+		        	User Name (Nickname):
+		        	<input id='settingsp_username' type='text'/>
+		        	Description:
+		        	<input id='settingsp_dsc' type='text'/>
+		        	Email:
+		        	<input id='settingsp_email' type='text'/>
+		        	New Password (Leave this empty to keep the existing password):
+		        	<input id='settingsp_newpass' type='password'/>
+		        	Confirm New Password:
+		        	<input id='settingsp_newpassc' type='password'/>
+		        	Current Password *:
+		        	<input id='settingsp_cpass' type='password' style='border:2px solid #0093bf;'/>
+
+
+	        	</div>
+	        	<div class='settings-save-button' onclick='settings_profile_save()'>Save</div>
+	        </div>
+	    </section>
+
+	    <section id="settings2" data-subpage='settings' class="page" data-sl='settings1' data-sr='settings3' style='padding: 0; background: #e6ecf1;'>
+	        <div data-role="content" class="content settings">
+	        	<div class='conversation-hdr'>
+	        		<img src='img/logo-long.png' height='23px'/>
+	        		<div class='conversation-hdr-text'>Privacy Settings</div>
+	        	</div>
+	        	<h1>Privacy Settings</h1>
+	        	<div class='settings-content'>
+	        		Profile Display
+	        		<div class='settings-option selected'>Public</div>
+	        		<div class='settings-option'>Rooms</div>
+	        		<div class='settings-option'>Hidden</div>
+	        	</div>
+	        	<div class='settings-save-button'>Save</div>
+	        </div>
+	    </section>
+
+	    <section id="settings3" data-subpage='settings' class="page" data-sl='settings2' data-sr='settings4' style='padding: 0; background: #e6ecf1;'>
+	        <div data-role="content" class="content settings">
+	        	<div class='conversation-hdr'>
+	        		<img src='img/logo-long.png' height='23px'/>
+	        		<div class='conversation-hdr-text'>About</div>
+	        	</div>
+	        	<h1>Notifications</h1>
+	        	<div class='settings-content'>
+	        		Profile Display
+	        		<div class='settings-check selected'>Conversation reply<span class='settings-check-txt'>On</span></div>
+	        		<div class='settings-check'>Friendship requests<span class='settings-check-txt'>On</span></div>
+	        		<div class='settings-check'>Chat<span class='settings-check-txt'>On</span></div>
+	        		
+	        	</div>
+	        	<div class='settings-save-button'>Save</div>
+	        </div>
+	    </section>
+
+	    <section id="settings4" data-subpage='settings' class="page" data-sl='settings3' data-sr='0' style='padding: 0; background: #e6ecf1;'>
+	        <div data-role="content" class="content settings">
+	        	<div class='conversation-hdr'>
+	        		<img src='img/logo-long.png' height='23px'/>
+	        		<div class='conversation-hdr-text'>About</div>
+	        	</div>
+
+	        	<h1>About Roadhouse</h1>
+	        	<h2>Our mission is to let people enjoy the world around them and to make beautiful spontaneous moments in their lives.</h2>
+	        	<p>In the morning, as Remi and Lee Ann slept, and as I looked with some sadness at the big pile of wash Remi and I were scheduled to do in the Bendix machine in the shack in the back (which had always been such a joyous sunny operation among the colored women and with Mr. Snow laughing his head off), I decided to leave. I went out on the porch. «No, dammit,» I said to myself, «I promised I wouldn’t leave till I climbed that mountain.» That was the big side of the canyon that led mysteriously to the Pacific Ocean.</p>
+	        </div>
+	    </section>
+
+
+	    <section id="camera1" data-subpage='camera' class="page" data-sl='page1' data-sr='0' style='padding: 0; background: #000000;'>
+	        <div data-role="content" class="content" style='height: 800px;'>
+	        	<div class='webscroll' id='wscamera-list' style='height: 100%; overflow: auto;'>
+	        		<div id='camcontent'>
+			        	<div class='conversation-hdr'>
+			        		<img src='img/logo-long.png' height='23px'/>
+			        		<div class='conversation-hdr-text'>Capture Photos</div>
+			        	</div>
+			        	<div class='camera-set' id='cameraset'>
+				        	<div class='camera-panel'>
+				        	</div>
+			        	</div>
+			        	<a href='javascript:camera_publish()'><div class='camera-set-finalbutton'>
+			        		Publish photos
+			        	</div></a>
+			        	<a href='javascript:camera_add_photo()'><div class='camera-set-finalbutton'>
+			        		Add new photos
+			        	</div></a>
+			        	<a href='javascript:camera_clear()'><div class='camera-set-finalbutton'>
+			        		Clear
+			        	</div></a>
+			        	
+		    			<div style='margin-bottom: 80px;'></div>
+	    			</div>
+    			</div>
+	   		</div>
+	    </section>
+
+	    <section id="newpost" data-subpage='new' class="page" data-sl='page1' data-sr='newroom' style='padding: 0; background: #e90000; height: 100%;'>
+	        <div data-role="content" class="content settings" style='position: relative; width: 100%; height: 100%; background: none;'>
+	        	<div class='newpost-quote'>
+	        		<div class='newpost-header'>New Post <span style='font-size: 70%; color: #9fdbea;'>New Room</span></div>
+	        		<a href='javascript: capture_image(newpost_photo_event, "newpost");'><div class='newpost-img'><img id='newpost-img-display' src='img/icons/addphoto.png'/><div class='newpost-img-overlay'><div id='newpost-img-count'></div></div></div></a>
+	        		<div class='newpost-text'><textarea id='newpost-text-post' placeholder='Write your story here...'></textarea></div>
+
+	        		<a href='javascript: post_publish()'><div class='newpost-button'>Publish</div></a>
+	        	</div>
+	   		</div>
+	    </section>
+
+	    <section id="newroom" data-subpage='new' class="page" data-sl='newpost' data-sr='0' style='padding: 0; background: #e90000; height: 100%;'>
+	        <div data-role="content" class="content settings" style='position: relative; width: 100%; height: 100%; background: none;'>
+	        	<div class='newpost-quote'>
+	        		<div class='newpost-header'><span style='font-size: 70%; color: #9fdbea;'>New Post</span> New Room</div>
+	        		<a href='javascript: capture_image(newroom_photo_event, "newroom");'><div class='newpost-roomimg'><img id='newroom-img-display' src='img/icons/addphoto.png'/></div></a>
+	        		
+	        		<div class='newpost-room'>
+	        			<input id='newroom-name' placeholder='Room name'/>
+	        			<textarea id='newroom-dsc' placeholder='Description'></textarea>
+	        			<textarea id='newroom-address' placeholder='Address'></textarea>
+	        			<input id='newroom-ticketurl' placeholder='Where to buy tickets from?'/>
+	        		</div>
+
+	        		<a href='javascript: room_publish()'><div class='newpost-button'>Publish</div></a>
+	        	</div>
+	   		</div>
+	    </section>
+
+
+		<section id="sendmsg" data-subpage='new' class="page" data-sl='previousx' data-sr='0' style='padding: 0; background: #e90000; height: 100%;'>
+	        <div data-role="content" class="content settings" style='position: relative; width: 100%; height: 100%; background: none;'>
+	        	<div class='newpost-quote'>
+	        		<div class='newpost-header'>Send Message</div>
+	        		<div style='clear: both;'></div><br/>
+	        		<span style='padding: 20px 10px;'>To <span id='sendmsg-username'></span></span><br/>
+	        		<div class='newpost-text'><textarea id='sendmsg-text' placeholder='Write your message here...'></textarea></div>
+
+	        		<a href='javascript: private_message_send()'><div id='sendmsg-button' class='newpost-button'>Send</div></a>
+	        	</div>
+	   		</div>
+	    </section>
+
+
+
+	    <section id="friends" data-subpage='new' class="page" data-sl='previous' data-sr='0' style='padding: 0; background: #e90000;' data-onload='people_displayfriend_list'>
+	        <div data-role="content" class="content settings" style='position: relative; width: 100%; background: none;'>
+	        	
+	        	<div class='friends-list' id='friends-list'>
+	        	</div>
+	   		</div>
+	    </section>
+
+
+	    <section id="profile" data-subpage='conversation' class="page" data-sl='friends' data-sr='0' style='padding: 0; background: #ffffff;'>
+	        <div data-role="content" class="content" style='padding: 0; background: #ffffff;'>
+	        	<div class='conversation-hdr'>
+	        		<img src='img/logo-long.png' height='23px'/>
+	        		<div class='conversation-hdr-text'>Profile</div>
+	        	</div>
+
+	        	<div class='profile-top'>
+	        		<div class='profile-dp' id='profile-info-dp'>
+	        			<img src='{{ static_url("client/img/test/info1.png")}}'/>
+	        		</div>
+	        		<div class='profile-btn' id='profile-btn-sendmsg'><img src='img/icons/profile-msg.png' width='50px' /></div>
+	        		<div class='profile-btn' id='profile-btn-add'><img src='img/icons/profile-user.png' width='50px' /></div>
+	        	</div>
+        		<div class='profile-text'>
+        			<div id='profileperson-name'></div>
+					<div id='profileperson-dsc'></div>
+        		</div>
+	        </div>
+	    </section>
+
+	    <section id="notifications" data-subpage='notifications' class="page" data-sl='page1' data-sr='0' style='padding: 0; background: #1a1a1a;' data-onload='notifications_initialize'>
+	        <div data-role="content" class="content" style='padding: 0; background: #1a1a1a;'>
+	        	<div class='notification-header'><h1>Notifications</h1></div>
+	        	<div id='notification-list'></div>
+	        </div>
+	    </section>
+
+	    <section id="loginui" data-subpage='notifications' class="page" data-sl='0' data-sr='loginnew' style='padding: 0; background: #282828; height: 100%;'>
+	        <div data-role="content" class="content" style='padding: 0; background: #e90000; height: 100%;'>
+	          <div class='loginform'>
+	          	<div class='loginform_inner'>
+		          	<input id='loginform_uname' placeholder='Email Address' tabindex="1" value="" size="30" maxlength="25" />
+		          	<input id='loginform_upass' placeholder='Password'name="password" type="password" size="30" maxlength="25" />
+		          	<a href='javascript:roadhouse_login()'>Log In</a>
+	            </div>
+	          </div>
+	        </div>
+	    </section>
+
+	    <section id="loginnew" data-subpage='notifications' class="page" data-sl='loginui' data-sr='0' style='padding: 0; background: #282828; height: 100%;'>
+	        <div data-role="content" class="content" style='padding: 0; background: #e90000; height: 100%;'>
+	          <div class='loginform'>
+	          	<div class='loginnewform_inner'>
+		          	<input id='loginnew_ufname' placeholder='First Name' type="text" tabindex="1" value="" size="30" maxlength="25" />
+		          	<input id='loginnew_ulname' placeholder='Last Name' type="text" tabindex="1" value="" size="30" maxlength="25" />
+		          	<input id='loginnew_dsc' placeholder='Write something about you...' type="text" tabindex="1" value="" size="30" maxlength="145" />
+		          	<input id='loginnew_email' placeholder='Email Address' type="text" tabindex="1" value="" size="30" maxlength="25" />
+		          	<input id='loginnew_upass' placeholder='Password' name="password" type="password" size="30" maxlength="25" />
+		          	<input id='loginnew_upassc' placeholder='Confirm Password' name="password" type="password" size="30" maxlength="25" />
+		          	<a href='javascript:roadhouse_newaccount()'>Create Account</a>
+	            </div>
+	          </div>
+	        </div>
+	    </section>
+
+
+	    <!--== hidden stuff =================================================-->
+
+
+	    <div id='notification-button' class='notification-button' style='display: none;' onclick='notifications_display();'></div>
+	    <div id='dialog-overlay' class='dialog-overlay' style='display: none;' onclick='close_dialog(0);'></div>
+		<canvas id="canvas_photofx" style="position: absolute; left: 0; top: 0; display: none; z-index: 100000000;"></canvas>
+	
+
+	    <!--== dialogs =================================================-->
+
+	    <div class='alertbox' id='alertbox' style='z-index: 1000000000; display: none;' onclick='notice_close(this)'>
+    		<p>Alert</p>
+    	</div>
+
+	    <div class='friends-search' id='friends-search' style='display: none;'>
+    		<input id='friends-search-input' placeholder='Search people here'/>
+    		<div class='friends-search-btn' onclick='people_search();'>
+    			<span class='icon' style='font-size: 100px;' >]</span>
+    		</div>
+    	</div>
+
+
+	    <!--== scripts =================================================-->
+		
+		<script type="text/javascript" src="js/cordova-2.5.0.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/notifications.js"></script>
+		<script type="text/javascript" src="js/timesync.js"></script>
+		<script type="text/javascript" src="js/imagefx.js"></script>
+		<script type="text/javascript" src="js/iscroll.js"></script>
+		<script type="text/javascript">
+				app.initialize();
+		</script>
+	</body>
+</html>

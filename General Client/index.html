@@ -1,0 +1,334 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+		<title>Roadhouse</title>
+
+		
+		<link rel="stylesheet" type="text/css" href="css/animate.css" />
+		<link rel="stylesheet" type="text/css" href="css/splash.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+	</head>
+	<body onload='roadhouse_init()'>
+
+		<div class='appbar'>
+			<center>
+				<a href='javascript: test()'><img src='img/icons/msg.svg' style='margin: 0 15px 0 15px' width='32px' /></a>
+				<a href='javascript: page_show_dialog("friends")'><img src='img/icons/user.svg' style='margin: 0 15px 0 15px' width='32px' /></a>
+				<a href='javascript: page_show_dialog("newpost")'><img src='img/icons/write.svg' style='margin: 0 15px 0 15px' width='32px' /></a>
+				<a href='javascript: page_show_dialog("camera1")'><img src='img/icons/camera.svg' style='margin: 0 15px 0 15px' width='32px' /></a>
+			</center>
+		</div>
+
+		<section id="page1" class="page" data-sl='0' data-sr='page2' style='overflow: hidden; padding: 0; min-height: 100%;' data-onload='introduction_display'	>
+
+
+			<div data-role="panel" id="myPanel">
+		    	<h1>Settings</h1>
+		        <ul>
+		            <a href='javascript: page_show_from_panel("settings1")'><li><h2>Account</h2></li></a>
+		            <a href='javascript: page_show_from_panel("settings2")'><li><h2>Privacy</h2></li></a>
+		            <a href='javascript: page_show_from_panel("settings4")'><li><h2>Notifications</h2></li></a>
+		            <a href='javascript: page_show_from_panel("settings5")'><li><h2>About</h2></li></a>
+		            <a href='javascript: page_show_from_panel("settings5")'><li><h2>Logout</h2></li></a>
+		        </ul>
+		    
+		    </div>
+
+		    <div data-role="content" class="content" id="ctpage1" style='overflow: hidden; padding: 0;'>
+		    	<div class='intro'>
+
+					<div class='intro-photos-large'>
+						<img src='img/test/intro-large.jpg'/>
+					</div>
+					<div class='intro-photos-thumbs'>
+						<div class='intro-photos-thumbs-inner'>
+							<img src='img/test/intro-t1.jpg'/>
+							<img src='img/test/intro-t2.jpg'/>
+							<img src='img/test/intro-t3.jpg'/>
+							<img src='img/test/intro-t4.jpg'/>
+						</div>
+						<div class='intro-notifications-landscape' onclick='notifications_display();'>
+							<span class='icon' style='font-size: 90px; float: left; margin-top: -10px'><img src='img/icons/notify.svg' style='margin: 0 15px 0 15px' width='85px' /></span>
+							<h1><span id='notification-counter-l'>0</span></h1>
+							<ul>
+								<li><div id='notification-lastshort-l1'><b>Aaron</b> sent a message</div></li>
+								<li><div id='notification-lastshort-l2'><b>Collin</b> shared a new album on...</div></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class='intro-text'>
+						<div class='intro-text-text' id='intro-text'>
+							<h2>You are here at,</h2>
+							<h1><div id='intro-header'>Mayfield Park Meetup</div></h1>
+							<h3><div id='intro-details'>12 people are here, 20 talking and 58 subscribed.</div></h3>
+						</div>
+						<div class='intro-notifications' onclick='notifications_display();'>
+							<span class='icon' style='font-size: 90px; float: left; margin-top: -10px'><img src='img/icons/notify.svg' style='margin: 0 15px 0 15px' width='85px' /></span>
+							<h1><span id='notification-counter-p'>0</span></h1>
+							<ul>
+								<li><div id='notification-lastshort-p1'><b>Aaron</b> sent a message</div></li>
+								<li><div id='notification-lastshort-p2'><b>Collin</b> shared a new album on...</div></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+		
+		
+	    <section id="page2" class="page" data-sl='page1' data-sr='page3' style='background: #dde1eb; height: 100%;'
+	    	id='rooms_page' data-paction='rooms_init_panel'>
+	    	
+	    	<div data-role="content" class="content" style='background: #dde1eb'>
+		    	<div class='rooms_ct' id='rooms_ct'>
+		    		
+		    	</div>
+	    	</div>
+	    </section>
+
+	    <section id="page3" class="page" data-sl='page2' data-sr='page4' style='height: 100%;' data-onload='map_initialize'>
+	        <div data-role="content" class="content" style='overflow: hidden; padding: 0; height: 100%;'>
+	             <div class='page-content' style='height: 100%;'>
+	            	<div class='page-hdr'>
+	            		<img src='img/logo-long.png'/>
+	            		<h1>map</h1>
+	            		<p>See what's happening around you</p>
+	            	</div>
+	            	<div style='clear: both;'></div>
+	             	<!--<img src='img/test/map.png' style='width: 100%;'/>-->
+	             	<div id='rmapcover' style="position:absolute; width:100%; height:100%; z-index: 1000;"></div>
+					<div id='rmap' style="position:relative; width:100%; height:100%;"></div>
+      
+	             	
+	             </div>
+	        </div>
+	    </section>    
+
+		<section id="page4" class="page" data-sl='page3' data-sr='0' style='padding: 0; background: #f1f5ff;' data-onload='subscriptions_display'>
+	        <div data-role="content" class="content" style='padding: 0; background: #f1f5ff;'>
+	            <div class='page-content'>
+	            	<div class='page-hdr'>
+	            		<img src='img/logo-long.png'/>
+	            		<h1>subscriptions</h1>
+	            		<p>Your day, a list of things you've marked.</p>
+	            	</div>
+	            	<div style='clear: both;'></div>
+	            	<div id='subscriptions-list'>
+		             	
+		        	</div>
+	            </div>
+	        </div>
+	    </section>
+
+	    <section id="conv1" data-subpage='conversation' data-sl='page2' data-sr='conv2' class="page" style='padding: 0; background: #ffffff;'>
+	        <div class="content" style='padding: 0; background: #ffffff; height: 800px; overflow: scroll;'>
+	        	<div class='conversation-hdr'>
+	        		<img src='img/logo-long.png' height='23px'/>
+	        		<div class='conversation-hdr-text'>Mayfield Park Meetup</div>
+	        	</div>
+	        	<center>
+	        	<div id="conversation_ct">
+	        	</div>
+				</center>
+	        </div>
+	    </section>
+
+	    <section id="conv2" data-subpage='conversation' class="page" data-sl='conv1' data-sr='0' style='padding: 0; background: #f9f9f9;' data-onload='room_info_initialize'>
+	        <div data-role="content" class="content" style='padding: 0; background: #f9f9f9;'>
+	        	<div class='conversation-hdr'>
+	        		<img src='img/logo-long.png' height='23px'/>
+	        		<div class='conversation-hdr-text'>Mayfield Park Meetup</div>
+	        	</div>
+
+	        	<div class='item-info'>
+	        		<div class='item-info-dp'>
+		             	<div id='rinfo_rmap_rmapcover' style="position:absolute; width:100%; height:400px; z-index: 1000;"></div>
+						<div id='rinfo_rmap' style="position:relative; width:100%; height:400px;"></div>
+	        		</div>
+	        		<div class='item-info-text'>
+	        			<h1>Mayfield Park Meetup</h1>
+						<p>We're in the park right now, taking pictures of everyone who
+						walks by. Planning to leave around 6.30.</p>
+	        		</div>
+	        	</div>
+	        </div>
+	    </section>
+
+
+
+	
+		<section id="splash" class="page" data-sl='0' data-sr='0' style='overflow: hidden; padding: 0; height: 100%; display: inline;'>
+			<div style='float: left; height: 50%; width: 100%; margin-bottom: -24px;'></div>
+			<center><div class='splash-box2'></div><div class='splash-box'></div></center>
+		</section>
+
+
+
+		<section id="settings1" data-subpage='settings' class="page" data-sl='page1' data-sr='settings2' style='padding: 0; background: #e6ecf1;'>
+	        <div data-role="content" class="content settings">
+	        	Account Settings
+	        </div>
+	    </section>
+
+	    <section id="settings2" data-subpage='settings' class="page" data-sl='settings1' data-sr='settings3' style='padding: 0; background: #e6ecf1;'>
+	        <div data-role="content" class="content settings">
+	        	Privacy Settings
+	        </div>
+	    </section>
+
+	    <section id="settings3" data-subpage='settings' class="page" data-sl='settings2' data-sr='settings4' style='padding: 0; background: #e6ecf1;'>
+	        <div data-role="content" class="content settings">
+	        	Subscriptions
+	        </div>
+	    </section>
+
+	    <section id="settings4" data-subpage='settings' class="page" data-sl='settings3' data-sr='settings5' style='padding: 0; background: #e6ecf1;'>
+	        <div data-role="content" class="content settings">
+	        	Notifications
+	        </div>
+	    </section>
+
+	    <section id="settings5" data-subpage='settings' class="page" data-sl='settings4' data-sr='0' style='padding: 0; background: #e6ecf1;'>
+	        <div data-role="content" class="content settings">
+	        	<div class='conversation-hdr'>
+	        		<img src='img/logo-long.png' height='23px'/>
+	        		<div class='conversation-hdr-text'>About</div>
+	        	</div>
+
+	        	<h1>About Roadhouse</h1>
+	        	<h2>Our mission is to let people enjoy the world around them and to make beautiful spontaneous moments in their lives.</h2>
+	        	<p>In the morning, as Remi and Lee Ann slept, and as I looked with some sadness at the big pile of wash Remi and I were scheduled to do in the Bendix machine in the shack in the back (which had always been such a joyous sunny operation among the colored women and with Mr. Snow laughing his head off), I decided to leave. I went out on the porch. «No, dammit,» I said to myself, «I promised I wouldn’t leave till I climbed that mountain.» That was the big side of the canyon that led mysteriously to the Pacific Ocean.</p>
+	        </div>
+	    </section>
+
+
+	    <section id="camera1" data-subpage='camera' class="page" data-sl='page1' data-sr='0' style='padding: 0; background: #000000;'>
+	        <div data-role="content" class="content" style='height: 800px; overflow: scroll;'>
+	        	<div class='conversation-hdr'>
+	        		<img src='img/logo-long.png' height='23px'/>
+	        		<div class='conversation-hdr-text'>Capture Photos</div>
+	        	</div>
+	        	<div class='camera-set' id='cameraset'>
+		        	<div class='camera-panel'>
+		        	</div>
+	        	</div>
+	        	<a href='javascript:camera_publish()'><div class='camera-set-finalbutton'>
+	        		Publish photos
+	        	</div></a>
+	        	<a href='javascript:camera_add_photo()'><div class='camera-set-finalbutton'>
+	        		Add new photos
+	        	</div></a>
+    			<div style='margin-bottom: 80px;'></div>
+	   		</div>
+	    </section>
+
+	    <section id="newpost" data-subpage='new' class="page" data-sl='page1' data-sr='newroom' style='padding: 0; background: #e90000; height: 100%;'>
+	        <div data-role="content" class="content settings" style='position: relative; width: 100%; height: 100%; background: none;'>
+	        	<div class='newpost-quote'>
+	        		<div class='newpost-header'>New Post <span style='font-size: 70%; color: #9fdbea;'>New Room</span></div>
+	        		<a href='javascript: capture_image(newpost_photo_event, "newpost");'><div class='newpost-img'><img id='newpost-img-display' src='img/icons/addphoto.svg'/><div class='newpost-img-overlay'><div id='newpost-img-count'></div></div></div></a>
+	        		<div class='newpost-text'><textarea id='newpost-text-post' placeholder='Write your story here...'></textarea></div>
+
+	        		<a href='javascript: post_publish()'><div class='newpost-button'>Publish</div></a>
+	        	</div>
+	   		</div>
+	    </section>
+
+	    <section id="newroom" data-subpage='new' class="page" data-sl='newpost' data-sr='0' style='padding: 0; background: #e90000; height: 100%;'>
+	        <div data-role="content" class="content settings" style='position: relative; width: 100%; height: 100%; background: none;'>
+	        	<div class='newpost-quote'>
+	        		<div class='newpost-header'><span style='font-size: 70%; color: #9fdbea;'>New Post</span> New Room</div>
+	        		<a href='javascript: capture_image(newroom_photo_event, "newroom");'><div class='newpost-roomimg'><img id='newroom-img-display' src='img/icons/addphoto.svg'/></div></a>
+	        		
+	        		<div class='newpost-room'>
+	        			<input id='newroom-name' placeholder='Room name'/>
+	        			<textarea id='newroom-dsc' placeholder='Description'></textarea>
+	        			<textarea id='newroom-address' placeholder='Address'></textarea>
+	        			<input id='newroom-ticketurl' placeholder='Where to buy tickets from?'/>
+	        		</div>
+
+	        		<a href='javascript: room_publish()'><div class='newpost-button'>Publish</div></a>
+	        	</div>
+	   		</div>
+	    </section>
+
+
+
+
+	    <section id="friends" data-subpage='new' class="page" data-sl='previous' data-sr='0' style='padding: 0; background: #e90000;' data-onload='people_displayfriend_list'>
+	        <div data-role="content" class="content settings" style='position: relative; width: 100%; background: none;'>
+	        	
+	        	<div class='friends-list' id='friends-list'>
+	        	</div>
+	   		</div>
+	    </section>
+
+
+	    <section id="profile" data-subpage='conversation' class="page" data-sl='friends' data-sr='0' style='padding: 0; background: #ffffff;'>
+	        <div data-role="content" class="content" style='padding: 0; background: #ffffff;'>
+	        	<div class='conversation-hdr'>
+	        		<img src='img/logo-long.png' height='23px'/>
+	        		<div class='conversation-hdr-text'>Jane's Profile</div>
+	        	</div>
+
+	        	<div class='profile-top'>
+	        		<div class='profile-dp'>
+	        			<img src='img/test/info1.png'/>
+	        		</div>
+	        		<div class='profile-btn'><img src='img/icons/profile-msg.svg' width='50px' /></div>
+	        		<div class='profile-btn'><img src='img/icons/profile-user.svg' width='50px' /></div>
+	        	</div>
+        		<div class='profile-text'>
+        			<h1>Jane Doe</h1>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat</p>
+        		</div>
+	        </div>
+	    </section>
+
+	    <section id="notifications" data-subpage='notifications' class="page" data-sl='page1' data-sr='0' style='padding: 0; background: #282828;' data-onload='notifications_initialize'>
+	        <div data-role="content" class="content" style='padding: 0; background: #282828;'>
+	        	<div class='notification-header'><h1>Notifications</h1></div>
+	        	<div id='notification-list'></div>
+	        </div>
+	    </section>
+
+
+	    <!--== hidden stuff =================================================-->
+
+
+	    <div id='notification-button' class='notification-button' style='display: inline;' onclick='notifications_display();'>12</div>
+	    <div id='dialog-overlay' class='dialog-overlay' style='display: none;' onclick='close_dialog(0);'></div>
+		<canvas id="canvas_photofx" style="position: absolute; left: 0; top: 0; display: none; z-index: 100000000;"></canvas>
+	
+
+	    <!--== dialogs =================================================-->
+
+
+	    <div class='friends-search' id='friends-search' style='display: none;'>
+    		<input id='friends-search-input' placeholder='Search people here'/>
+    		<div class='friends-search-btn' onclick='people_search();'>
+    			<span class='icon' style='font-size: 100px;' >]</span>
+    		</div>
+    	</div>
+
+
+	    <!--== scripts =================================================-->
+		
+		<script type="text/javascript" src="cordova-2.5.0.js"></script>
+		<script type="text/javascript" src="index.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/notifications.js"></script>
+		<script type="text/javascript" src="js/timesync.js"></script>
+		<script type="text/javascript" src="js/imagefx.js"></script>
+		<script type="text/javascript">
+				app.initialize();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,70 @@
+API
+
+JSON
+----
+
+People
+	get
+	get_friends
+	create
+	send_message (personal, if the user's online,
+					the notification will be sent
+					through websockets)
+					
+	delete (current account)
+	updata (current account)
+	follow (current account, friend req will be sent through websockets)
+	set_location (current account)
+	report
+
+Rooms
+	get (get rooms nearby)
+	get_info (get full information about the room)
+	enter (might need a password)
+	subscribe
+	-invite (invite someone to a room/usually for hidden rooms)
+	create
+	delete (has to be an admin)
+	get_album
+
+	
+Conversations (for personal/group chat + room posts.. all will be considered
+				as conversations)
+				
+	post
+	delete
+	reply
+	up
+	down
+	post_photo (photo will be saved under conversation id- secure token- album name)
+	
+	get (get is also considered as entering the conversation/post
+	     so the user will be added to the websocket notification pool
+		 and will get real time updates)
+	
+
+Notifications
+
+	send (userid, is_critical, {data}) - if critical, notification will be saved
+										 otherwise, it'll just be pushed into the websocket pool
+
+	get (userid, skip, count)
+
+	translate (obj) - put into a more readable form with {text, image, actionid, action_data}
+
+
+	-------------------
+
+	notification data structure:
+		from_user
+		type (follows, friendship_request, message, tag, posted_on_a_post, posted_in_a_conversation,
+					(posted_in_current_conversation), (posted_in_current_post)
+
+		data - {coversation id, post id, note id ... etc.}
+
+
+
+
+
+WebSockets
+----------

@@ -1,0 +1,113 @@
+Roadhouse Database Specification
+--------------------------------
+
+
+Person
+	+ Email
+	+ Password
+	+ ID
+	+ First name
+	+ Last name
+	+ Username (url)
+	- Social data
+			Twitter
+			Facebook
+			G+
+	+ Description
+	+ Current status
+	+ Geolocation
+			Lat
+			Long
+	+ Currently at
+			Place name
+			Place type (place, event)
+			Place ID (if exists)
+	- Profile
+			[<Post>]
+	- Details
+			[Websites]
+				Name
+				URL
+	+ Online status
+	+ Community ratings
+			Rating1
+			Rating2
+	+ Photo
+			URL
+			W
+			H
+			Cover Photo URL
+			Cover W
+			Cover H
+	+ Friends
+			[(ID, _ID, Since, Friendship rating, Chat: [Text])]
+	+ Notifications
+			[<Notification>]
+				
+Place
+	+ Name
+	+ Description
+	+ Address
+	+ Cirrent status
+	+ Geolocation
+			Lat
+			Long
+	+ Event
+			Start time
+			End time
+	+ Community ratings
+			Rating1
+			Rating2
+	+ Ticket information
+	+ Conversation
+			[<Post>]
+	+ People
+			[(ID, _ID, Status)]
+	+ Size
+	+ Security
+			Type #open, closed, live (cannot subscribe)
+			Secret word
+	+ Type #event, group (no location, secret), place
+	+ Advertisement
+			Radius
+			Note
+			Initiate time
+			Advertisement duration
+			Past advertisements count
+	+ Subscribers
+			[(ID, _ID, Status)]
+	+ Photo
+			URL
+			W
+			H
+	+ Admins
+			[(ID, _ID, Status)]
+
+
+Messages
+	+ Users
+			[(ID, _ID, Status, Entered time)]
+	+ Invited
+			[(ID, _ID, Status, Invited time)]
+	+ Chat
+			[Text]
+			
+
+Conversation
+
+	Type    - (1-conversation/2-post)
+	Parent  - (parent conversation for posts)
+	Associate: /* associate for posts will be the same .. room id etc.) */
+		id
+		type (room/chat)
+	[Posts]
+		userid
+		type - Type
+		text - Text
+		tags - Tagged Users [{}]
+		data - Data {}
+		marks - Marks [{userid}] /* only ups will be included in the list]
+		rating - Rating /* ups - downs */
+		notes - <conversation id for notes>
+		
+		

@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   <head>
+      <title>Map with aerial view</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+      <script type="text/javascript">
+      var map = null;
+            
+      function getMap()
+      {
+         map = new Microsoft.Maps.Map(document.getElementById('myMap'), {credentials: 'AlzEMHjU5aY8KPCt4FIgmwH3XuVLrs4QpfmZ0S7YDb7MlM1WjlAnTEeE01nGD3Nv', center: new Microsoft.Maps.Location(47.59501083000102, -122.33158886957427), zoom: 18, mapTypeId: Microsoft.Maps.MapTypeId.aerial});
+      }
+  
+      </script>
+   </head>
+   <body onload="getMap();">
+      <div id='myMap' style="position:relative; width:400px; height:400px;"></div>
+   </body>
+</html>
+      
