@@ -16,8 +16,8 @@ You need following software in order to run the server:
 
 ##Screenshots
 
-![Screenshot](/img/sc1.png)
-![Screenshot](/img/sc2.png)
+![Screenshot](/Misc/sc1.png)
+![Screenshot](/Misc/sc2.png)
 
 Credits: 
 
