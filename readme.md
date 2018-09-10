@@ -1,9 +1,9 @@
-#Roadhouse
+# Roadhouse
 
 A geo-social network with virtual chat rooms, feed and social connections. Uses python, mongodb
 and tornado.
 
-##Installation
+## Installation
 
 You need following software in order to run the server:
 
@@ -14,7 +14,7 @@ You need following software in order to run the server:
 
  (Both MongoDB and Tornado should be configured with Python)
 
-##Screenshots
+## Screenshots
 
 ![Screenshot](/Misc/sc1.png)
 ![Screenshot](/Misc/sc2.png)
